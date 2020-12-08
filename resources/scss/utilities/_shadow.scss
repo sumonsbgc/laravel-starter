@@ -1,0 +1,88 @@
+/*
+===========================================================
+Box Shadow Utitlities Style Start From Here...
+===========================================================
+*/
+
+.shadow-none{
+    box-shadow: none !important;
+}
+
+.shadow-sm{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+.shadow{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 
+                0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+.shadow-md{
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+.shadow-lg{
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow-xl{
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+// $shadows: (
+//     "shadow-xs": (
+//         "x": 0,
+//         "y": 1px,
+//         "blur": 2px,
+//         "spread": 0,
+//         "opacity": 0.05,
+//     ),
+    
+//     "shadow-sm": (
+//         "x": 0,
+//         "y": 1px,
+//         "blur": 2px,
+//         "spread": 0,
+//         "opacity": 0.1,
+//     ),
+
+//     "shadow": (
+//         "x": 0,
+//         "y": 1px,
+//         "blur": 3px,
+//         "spread": 0,
+//         "opacity": 0.1,
+//     ),
+
+//     "shadow-md": (
+//         "x": 0,
+//         "y": 4px,
+//         "blur": 6px,
+//         "spread": -1px,
+//         "opacity": 0.1,
+//     ),
+
+//     "shadow-lg": (
+//         "x": 0,
+//         "y": 10px,
+//         "blur": 15px,
+//         "spread": -3px,
+//         "opacity": 0.1,
+//     ),
+    
+//     "shadow-xl": (
+//         "x": 0,
+//         "y": 20px,
+//         "blur": 25px,
+//         "spread": -5px,
+//         "opacity": '0.1',
+//     )
+// );
+
+// @each $key, $value in $shadows {
+//     .#{$key}{
+//         @each $x,$y,$blur,$spread,$opacity in $value {
+//             @include box-shadow($x, $y, $blur, $spread, $opacity);            
+//         }
+//     }    
+// }

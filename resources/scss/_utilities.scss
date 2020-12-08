@@ -1,0 +1,27 @@
+
+@import './utilities/margin';
+@import './utilities/padding';
+@import './utilities/shadow';
+
+$direction : (
+    left,
+    right,
+    center,
+    justify
+);
+
+@each $value in $direction {
+    .text-#{$value}{
+        text-align: $value;
+    }
+}
+
+.btn{
+    background-color: lighten($color: $white, $amount: 4);
+    border-radius: 5px;
+    padding: 9px 12px;
+    color: #fff;
+    i{
+        font-size: .9rem;
+    }
+}

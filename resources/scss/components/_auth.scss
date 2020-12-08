@@ -1,0 +1,81 @@
+.welcome-page{
+    background-color: $lightwhite;
+}
+.welcome-header{
+    box-shadow: 0 0 35px 0px rgba($color: $lightgray, $alpha: 0.15);
+    .auth-header{
+        display: flex;
+        height: 60px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        li{
+            position: relative;
+            a{
+                color: #000;
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+            ul{
+                display: none;
+                position: absolute;
+                top: 100%;
+                background-color: #fff;
+                width: 300px;
+                padding: .5rem;
+                li{
+                    //background-color: #f2f2f2;
+                }
+            }
+
+            &:hover ul{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+
+.auth-app{
+    height: 100vh;
+    background-color: $lightwhite;
+    
+    .container {
+        width: 700px;
+    }
+    
+    .text-size-2 {
+        font-size: 1.6rem;
+    }
+    
+    .text-size-1 {
+        font-size: 1.2rem;
+        line-height: 1.9rem;
+    }
+    
+    .btn-link {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        border: 0;
+        margin-top: 25px;
+    }
+}
+
+.login-form,
+.register-form{
+    width: 600px;
+
+    .brand-logo{
+        margin-top: -65px;
+        background: #000;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

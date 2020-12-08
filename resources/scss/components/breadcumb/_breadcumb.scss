@@ -1,0 +1,16 @@
+.kr_breadcumb{
+    display: flex;
+    li{
+        a{
+            color: $text-color;
+            font-size: .9rem;
+            i{
+                font-size: .9rem;
+                padding: 0px 5px;
+            }
+            &.active{
+                color: $purple !important;
+            }
+        }
+    }
+}

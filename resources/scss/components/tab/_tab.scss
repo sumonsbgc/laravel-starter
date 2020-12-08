@@ -1,0 +1,67 @@
+.tab-container{
+    width: 100%;
+    overflow: hidden;
+    
+    .tab-filter{
+        display: flex;
+        justify-content: space-between;
+        li{
+            a{
+                color: $text-color;
+                font-size: 1.1rem;
+                cursor: pointer;
+                display: block;
+                border-bottom: 2px solid #eeeeee;
+                transition: border .6s linear;
+                &.active{
+                    border-bottom: 4px double $purple;
+                }
+            }
+        }
+        &.setting-filter{
+            justify-content: start;
+            border-radius: 5px;
+            li{
+                margin-bottom: .5rem;
+                a{
+                    padding: 12px 1rem;
+                    font-size: 1rem;
+                    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+                    border-radius: 5px;
+                    -webkit-border-radius: 5px; 
+                    -moz-border-radius: 5px;
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+                    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+                    color: $white;
+                    border: solid 1px $purple;
+                    background: $purple;
+                    background: -webkit-gradient(linear, left top, left bottom, from(lighten($purple, 3)), to($purple));
+                    background: -moz-linear-gradient(top,  lighten($purple, 3),  $purple);
+                    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr=$purple, endColorstr=$purple);
+
+                    // border: none;
+                    &.active{
+                        position: relative;
+                        top: 1px;                    
+                        color: $white;
+                        background: #600bdd;
+                        border: 1px solid #600bdd;
+                        background: -webkit-gradient(linear, left top, left bottom, from(lighten(#600bdd, 3)), to(#600bdd));
+                        background: -moz-linear-gradient(top,  lighten(#600bdd, 3),  #600bdd);
+                        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#600bdd', endColorstr='#600bdd');
+                    }
+                }
+            }
+        }
+    }
+
+    .tab-content{
+        width: 100%;
+        overflow: hidden;
+        .tab-section{
+            width: 100%;
+        }
+    }
+}

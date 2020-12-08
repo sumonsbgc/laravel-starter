@@ -1,0 +1,56 @@
+@import './variable';
+@import './reset';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~select2/src/scss/core";
+@import "~jquery-datetimepicker/jquery.datetimepicker.css";
+@import './mixins';
+@import './color';
+@import './utilities';
+@import './grid';
+@import './flex';
+@import './components/auth';
+
+body{
+    background-color: $bodybg;
+    transition: all .2s;
+    font-family: 'roboto_regular';
+    font-size: .9rem;
+    #page-wrapper{
+        display: grid;
+        grid-template-columns: minmax(230px, 300px) auto;
+        grid-template-rows: 45px minmax(100vh, auto);
+        @media only screen and ( max-width: 575px ) {
+            grid-template-columns: auto;
+            grid-template-rows: 45px minmax(100vh, auto);
+        }
+        background-color: $bodybg;
+        @import './sections/header';
+        @import './sections/sidebar';
+    }
+}
+
+.content{
+    .page-title{
+        font-size: 1.25rem;
+        color: $heading-color;
+        font-family: $medium-font;
+        font-weight: 500;
+    }
+    padding: 2rem;
+    @media only screen and ( max-width: 575px ) {
+        padding: 1rem 0.6rem;
+    }
+    color: #fff;
+}
+
+
+@import './components/breadcumb/breadcumb';
+@import './components/card/card';
+@import './components/tab/tab';
+@import './components/form/form';
+@import './components/form/advance_form';
+@import './components/table/table';
+@import './pages/settings';

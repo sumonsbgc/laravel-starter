@@ -1,0 +1,27 @@
+.profile-card{
+    .profile-pic{
+        width: 100%;
+        background-color: rgb($color: #2c3a47, $alpha: 1);
+        display: flex;
+        h3{
+            margin-top: 25px;
+            font-weight: 500;
+            color: $white;
+            font-size: 1.1rem;
+        }
+        img{
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #fff;
+        }
+    }
+
+    .profile-info{
+        td{
+            font-size: 1rem;
+        }
+    }
+}
+

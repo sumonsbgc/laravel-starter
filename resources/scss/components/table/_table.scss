@@ -1,0 +1,31 @@
+.kr-table{
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    &.bordered{
+        tr{
+            th,td{
+                border: 1px solid #dddddd;
+                padding: 6px 10px;
+                font-family: $text-font;
+                &:last-child{
+                    text-align: center;
+                }
+            }
+            th{
+                padding: 12px;
+                background-color: #fafbfe;
+                letter-spacing: .3px;
+                text-transform: capitalize;
+                font-family: $medium-font;
+                font-weight: 500;
+            }
+        }
+    }
+
+    tr, td, th{
+        padding: 6px 10px;
+        font-family: $text-font;
+    }
+
+}

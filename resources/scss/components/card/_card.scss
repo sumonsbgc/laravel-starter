@@ -1,0 +1,30 @@
+.card {
+    background-color: lighten($color: $white, $amount: 4);
+    border-radius: 6px;
+    box-shadow: 0 0 35px 0px rgba($color: $lightgray, $alpha: 0.15);
+    .card-header {
+        margin-bottom: 0.8rem;
+        padding: 13px 15px;
+        border-bottom: 2px solid #efefef;
+        color: $heading-color;
+        font-family: $medium-font;
+        font-size: 1.1rem;
+    }
+    
+    .card-body {
+        text-align: left;
+        padding: 5px 15px;
+        color: $lightblack;
+    }
+
+    .card-footer {
+        margin-top: 0.8rem;
+        padding: 13px 15px;
+        color: $heading-color;
+        font-family: $medium-font;
+        font-size: 1.05rem;
+        border-top: 2px solid #efefef;
+    }
+}
+
+@import './profile/profile';

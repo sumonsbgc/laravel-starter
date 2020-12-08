@@ -1,0 +1,27 @@
+/*
+===========================================================
+Padding Utilities Style start from Here
+===========================================================
+*/
+
+@for $i from 0 to 5 {
+    .p-#{$i} {
+        padding: #{$i}rem !important;
+    }
+
+    .px-#{$i} {
+        padding-left: #{$i}rem !important;
+        padding-right: #{$i}rem !important;
+    }
+
+    .py-#{$i} {
+        padding-top: #{$i}rem !important;
+        padding-bottom: #{$i}rem !important;
+    }
+
+    @each $ind, $dir in (t: top, r: right, b: bottom, l: left) {
+        .p#{$ind}-#{$i} {
+            padding-#{$dir}: #{$i}rem !important;
+        }
+    }
+}

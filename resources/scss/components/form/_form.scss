@@ -1,0 +1,113 @@
+form {
+
+    @mixin common-form-property {
+        width: 100%;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid $lightgray;
+        padding: .5rem;
+        color: #111111;
+        transition: outline .6s;
+        font-family: $text-font;
+        &:focus{
+            border: 2px solid $lightgray;
+            outline: 0;
+        }
+        &::placeholder{
+            color: $lightgray;
+        }
+    }
+
+    .label{
+        font-family: $text-font;
+        font-size: 1rem;
+        font-weight: 500;
+        display: block;
+        margin-left: 3px;
+        margin-bottom: .5rem;
+        color: $lightblack;
+    }
+
+    .input-control {
+        min-height: 41px;
+        @include common-form-property();
+    }
+    
+    .select-control {
+        min-height: 41px;
+        background-color: $white;
+        @include common-form-property();
+    }
+
+    .text-control{
+        @include common-form-property();
+        min-height: 130px;
+        resize: none;
+    }
+
+    .invalid{
+        border: 2px solid red !important;
+    }
+
+    .invalid-feedback{
+        color: red !important;
+        padding: 6px 0;
+        display: inline-block;
+        font-size: 1.1rem;
+    }
+
+    .submit-control{
+        @include common-form-property();
+        background-color: $purple;
+        border-color: $purple;
+        border-bottom: 4px solid #6f41b4;
+        color: #fff;
+        cursor: pointer;
+        padding: .7rem;
+        font-size: 1rem;
+        width: 120px;
+        text-align: center;
+    }
+
+    .select2-container--default .select2-selection--single {
+        background-color: #fff;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: 9px 0px;
+        height: 44px;
+        .select2-selection__arrow {
+            height: 0px;
+            position: absolute;
+            top: 50%;
+            right: 1px;
+            width: 20px;
+        }
+    }    
+}
+
+.select2-container--default 
+.select2-search--dropdown 
+.select2-search__field {
+    border: 1px solid $blue !important;
+    border-radius: 4px;
+    padding: 5px;
+    height: 35px;
+    &:focus{
+        outline-color: $blue;
+    }
+}
+
+.select2-results {
+    display: block;
+    padding: 10px 0px;
+    .select2-results__options{
+        li{
+            background-color: rgba($color: #ddd, $alpha: 0.0);
+        }
+    }
+}
+
+.select2-container--open 
+.select2-dropdown--above{
+    padding: 10px;
+}

@@ -1,0 +1,9 @@
+@mixin box-shadow ($xAxis: 0, $yAxis: 1px, $blur: 2px, $spread: 0px, $opacity: 1) {
+    box-shadow: $xAxis $yAxis $blur $spread rgba($color: #000000, $alpha: $opacity);
+}
+
+@mixin gradient($from, $to) {
+    background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background: -moz-linear-gradient(top, $from, $to);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
