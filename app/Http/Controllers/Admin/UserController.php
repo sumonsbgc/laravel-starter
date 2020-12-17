@@ -2,54 +2,68 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\City;
+use App\Contracts\UserContract;
+use App\Traits\FileHandlingTrait;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ProfilePictureUploadRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    private $user;
-    
-    public function __construct(User $user)
+    use FileHandlingTrait;
+    protected $userRepo;
+
+    public function __construct(UserContract $userRepo)
     {
-        $this->user = $user;
+        $this->userRepo = $userRepo;
     }
 
-    public function index(){
+    public function index()
+    {
+        $users = $this->userRepo->paginate(2);
         $this->setPageTitle('All Users', 'User Management');
-        return view('admin.users.index', ['users' => $this->user->all()]);
+        return view('admin.users.index', compact('users'));
     }
 
-    public function store(Request $request){
-
+    public function create(){
+        $this->setPageTitle('New User', 'User Management');
+        return view('admin.users.create');
     }
 
-    public function edit($id){     
-        $this->setPageTitle('Edit Users', 'User Management');           
-        return view('admin.users.edit', ['user' => $this->user->findById($id)]);
+    public function store(UserCreateRequest $request)
+    {
+        $this->userRepo->createUser($request->all());
+        return $this->redirectRoute('admin.users', ['status' => 'success', 'message' => 'User has been created Successfully']);
     }
 
-    public function update(Request $request, $id){
+    public function edit($id)
+    {
+        $user = $this->userRepo->findUserById($id);
+        $cities = (new City())->findCitiesByCountryId(Auth::user()->country_id);
 
-        $valid = Validator::make($request->all(), [
-            'first_name' => ['required', 'max:70'],
-            'last_name' => ['required', 'max:70'],
-            'email' => ['required', 'max:70'],
-            'user_name' => ['required', 'max:100'],
-            'mobile' => ['required', 'max:15'],
-            'birth_date' => [],
-            'gender' => [],
-            'country_id' => [],
-            'city_id' => [],
-            'address' => [],
+        $this->setPageTitle('Edit Users', 'User Management');
+        return view('admin.users.edit', compact('user', 'cities'));
+    }
+
+    public function update(UserUpdateRequest $request, $id)
+    {
+        $this->userRepo->updateUser($request->all(), $id);
+        return $this->redirectBack(['status' => 'success', 'message' => 'User Data has been updated successfully']);
+    }
+
+    public function upload_profile_pic(ProfilePictureUploadRequest $request)
+    {        
+        $fileName = $this->userRepo->uploadProfilePicture($request->all());
+
+        return $this->responseJson([
+            'status'   => 'success',
+            'message'  => 'Profile picture has been updated successfully.',
+            'fileName' => Storage::url($fileName)
         ]);
-        
-        if($valid->fails()){
-            return redirect()->back()->withErrors($valid)->withInput();
-        }
-
-
     }
 }

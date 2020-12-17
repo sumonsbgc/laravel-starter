@@ -33,5 +33,8 @@ class Role extends Model
         return $this->newQuery()->create($data);
     }
     
+    public function findById(int $id){
+        return $this->query()->find($id);
+    }
 
 }

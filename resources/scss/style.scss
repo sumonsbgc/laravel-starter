@@ -6,6 +6,7 @@
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~select2/src/scss/core";
 @import "~jquery-datetimepicker/jquery.datetimepicker.css";
+@import "~toastr/toastr";
 @import './mixins';
 @import './color';
 @import './utilities';
@@ -45,6 +46,32 @@ body{
     }
     color: #fff;
 }
+
+.kr-pagination{
+    display: flex;
+    li{
+        border: 1px solid $purple;
+        margin-left: 5px;
+        border-radius: 15px;
+        text-align: center;
+        &.disabled{
+            padding: 10px 20px;
+        }
+        a{
+            padding: 10px;
+            display: block;
+            color: $black;
+            cursor: pointer;
+        }
+        &.active{
+            padding: 10px;
+            background-color: $purple;
+            color: $white;
+        }
+    }
+}
+
+
 
 
 @import './components/breadcumb/breadcumb';

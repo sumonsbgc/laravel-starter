@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\AttributeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\RoleController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\Auth\Admin\VerificationController;
 use App\Http\Controllers\Auth\Admin\ResetPasswordController;
 use App\Http\Controllers\Auth\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\Admin\ConfirmPasswordController;
+use App\Http\Controllers\CategoryController;
 
 // Authentication
 
@@ -47,16 +50,33 @@ Route::prefix('admin')->middleware(['auth:admin', 'verified:admin', 'role:admin'
     
     // Admin Profile Controllers
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
-    Route::post('/user', [UserController::class, 'store'])->name('admin.user');
+    Route::get('/user/create', [UserController::class, 'create'])->name('admin.user.create');
+    Route::post('/user/store', [UserController::class, 'store'])->name('admin.user.store');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
     Route::put('/user/update/{id}', [UserController::class, 'update'])->name('admin.user.update');
     Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('admin.user.delete');
+    Route::post('/user/profile_pic/upload', [UserController::class, 'upload_profile_pic'])->name('admin.profile_pic.upload');
 
+    // Category Controller
+    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::put('/category/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+
+    // Attribute Controller
+    Route::get('/attributes', [AttributeController::class, 'index'])->name('admin.attributes');
+    Route::post('/attribute/store', [AttributeController::class, 'store'])->name('admin.attribute.store');
+    Route::get('/attribute/edit/{id}', [AttributeController::class, 'edit'])->name('admin.attribute.edit');
+    Route::put('/attribute/update/{id}', [AttributeController::class, 'update'])->name('admin.attribute.update');
+
+    // Admin Role Controllers
     Route::get('/roles', [RoleController::class, 'index'])->name('admin.roles');
     Route::post('/roles/store', [RoleController::class, 'store'])->name('admin.role.store');
 
     Route::get('city/{id}', [CityController::class, 'findCityByCountryId'])->name('city');
 
+    // Admin Settings Controllers
     Route::get('settings', [SettingController::class, 'index'])->name('admin.settings');
     Route::post('setting/update', [SettingController::class, 'update'])->name('admin.setting.update');
     

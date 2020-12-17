@@ -19,6 +19,11 @@ class BaseRepository implements BaseContract{
         return $this->model->orderBy($orderBy, $sortBy)->get($columns);
     }
 
+    public function paginate(int $limit)
+    {
+        return $this->model->paginate($limit);
+    }
+
     public function create(array $attributes)
     {
         return $this->model->create($attributes);

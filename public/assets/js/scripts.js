@@ -65,5 +65,6 @@
         });
     }
 
+    selectOption('.select2', 'Select Parent Category');
 
 }(jQuery));

@@ -9,6 +9,8 @@ interface BaseContract{
 
     public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
 
+    public function paginate(int $limit);
+
     public function findById(int $id);
 
     public function findOrFailById(int $id);

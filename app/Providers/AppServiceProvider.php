@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -25,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::composer("*", function($view){
-        //     $view->with('prefix', Route::current()->action['prefix']);
-        // });
+        View::composer(['admin.category.index', 'admin.category.edit'], function($view){
+            $view->with('cats', Category::all());
+        });
     }
 }

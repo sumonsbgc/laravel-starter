@@ -36,6 +36,10 @@
         width: calc(100% / 12 * #{$col});
         flex-basis: calc(100% / 12 * #{$col});
     }
+    
+    .offset-#{$col}{
+        margin-left: calc(100% / 12 * #{$col});
+    }
 }
 
 .flex-center{

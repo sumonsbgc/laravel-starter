@@ -21,32 +21,42 @@ class Controller extends BaseController
     protected function showErrorPage($errorCode = 404, $message = null){
         $data['message'] = $message;
         return response()->view('errors.'.$errorCode, $data, $errorCode);
+    }    
+    
+    protected function responseJson( $message = [] ){
+        return response()->json($message);
     }
 
-    protected function responseJson($error = true, $responseCode = 200, $message = [], $data = null){
-        return response()->json([
-            'error'         => $error,
-            'response_code' => $responseCode,
-            'message'       => $message,
-            'data'          => $data
-        ]);
-    }
+    protected function redirectRoute($route, $message, $type = 'info'){
 
-    protected function responseRedirect($route, $message, $type = 'info', $error = false, $withOldInputWhenError = false){
-        $this->setFlashMessage($message, $type);
-        $this->showFlashMessages();
-
-        if($error && $withOldInputWhenError){
-            return redirect()->back()->withInput();
+        if(!empty($message)){
+            $this->setFlashMessage($message, $type);
+            $this->showFlashMessages();
         }
 
         return redirect()->route($route);
+
     }
 
-    protected function responseRedirectBack($message, $type = 'info', $error = false, $withOldInputWhenError = false){
-        $this->setFlashMessage($message, $type);
-        $this->showFlashMessages();
+    protected function redirectBack($message, $type = 'info'){
+
+        if(!empty($message)){
+            $this->setFlashMessage($message, $type);
+            $this->showFlashMessages();
+        }
 
         return redirect()->back();
+
     }
+
+    protected function redirectBackWithInput( $error = false ){
+
+        if( !empty($error) ){
+            return redirect()->back()->withInput()->withErrors( $error );
+        }
+
+        return redirect()->back()->withInput();
+
+    }
+
 }

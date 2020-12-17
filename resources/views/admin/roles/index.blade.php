@@ -2,29 +2,8 @@
 
 @section('content')
     <div class="content">
-        <div class="flex mb-1">
-            <div class="col-6">
-                <h3 class="page-title">{{ $title ?? '' }}</h3>
-            </div>
-            <div class="col-6">
-                <ul class="kr_breadcumb justify-end">
-                    <li><a href="#">Home <i class="fas fa-angle-double-right"></i></a> </li>
-                    <li><a href="{{ route("admin.user") }}" class="active">{{ $title ?? '' }}</a></li>
-                </ul>
-            </div>
-        </div>
-
-        @if(!empty(session()->has('status')))
-            <div class="flex mb-1">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            {{ session()->get('message') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
+        @include('admin.partials.page_title')
+        @include('admin.partials.validation_errors')
 
         <div class="flex mb-1">
             <div class="col-4">
@@ -33,7 +12,7 @@
                         Add New Role
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.role.store') }}" method="POST">
+                        <form action="{{ route('admin.role.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="my-1">
                                 <label for="role_name" class="label">Role Name<span class="text-red">*</span></label>

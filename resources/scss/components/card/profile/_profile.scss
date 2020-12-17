@@ -3,6 +3,7 @@
         width: 100%;
         background-color: rgb($color: #2c3a47, $alpha: 1);
         display: flex;
+        position: relative;
         h3{
             margin-top: 25px;
             font-weight: 500;
@@ -16,6 +17,17 @@
             overflow: hidden;
             border: 3px solid #fff;
         }
+
+        .upload_profile{
+            position: absolute;
+            cursor: pointer;
+            color: $white;
+            opacity: 0;
+            width: 100px;
+            height: 100px;
+            margin-top: -45px;
+        }
+
     }
 
     .profile-info{

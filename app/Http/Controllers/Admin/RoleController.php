@@ -31,9 +31,9 @@ class RoleController extends Controller
             return redirect()->back()->withErrors($valid)->withInput();
         }
 
-        if($this->role->store($request)){
-            return redirect()->back()->with(['status' => 'success', 'message' => 'Role has been created successfully']);
-        }
+        // if($this->role->store($request)){
+        return redirect()->back()->with(['status' => 'success', 'message' => 'Role has been created successfully']);
+        // }
     }
 
 }

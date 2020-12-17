@@ -103,17 +103,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return false;
     }
 
-    public function findById($id){
-        return $this->query()->findOrFail($id);
-    }
-
-    public function createUser(array $data){
-        return $this->query()->create($data);
-    }
-    
-    public function updateUser(array $data, $id){
-        $query = $this->findById($id);
-        return $query->update($data);
-    }
-
 }

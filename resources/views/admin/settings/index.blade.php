@@ -2,17 +2,7 @@
 
 @section('content')
     <div class="content">
-        <div class="flex mb-1">
-            <div class="col-6">
-                <h3 class="page-title">{{ $title ?? '' }}</h3>
-            </div>
-            <div class="col-6">
-                <ul class="kr_breadcumb justify-end">
-                    <li><a href="#">Home <i class="fas fa-angle-double-right"></i></a> </li>
-                    <li><a href="{{ route('admin.user') }}" class="active">{{ $title ?? '' }}</a></li>
-                </ul>
-            </div>
-        </div>
+        @include('admin.partials.page_title')
 
         <div class="flex mb-1">
             <div class="col-3">

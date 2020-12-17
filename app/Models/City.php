@@ -12,4 +12,9 @@ class City extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+
+    public function findCitiesByCountryId($CountryId){
+        $cities = $this->query()->where('country_id', $CountryId)->get();        
+        return $cities;
+    }
 }
