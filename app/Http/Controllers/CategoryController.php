@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function index(){
         $categories = $this->cateogry->paginate(2);
+        
         $this->setPageTitle('Category Management', '');
         return view('admin.category.index', compact('categories'));
     }
@@ -46,13 +47,11 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
-
         if($this->cateogry->deleteCategory($id)){
             return $this->redirectRoute('admin.categories', [
                 'status' => 'success',
                 'message' => 'Category has been deleted successfully'
             ]);
         }
-        
     }
 }
