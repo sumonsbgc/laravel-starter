@@ -1,30 +1,33 @@
-
-.text-red{
+.text-red {
     color: $red !important;
 }
 
-.text-black{
+.text-black {
     color: $lightblack;
 }
 
-
-.bg-transparent{
+.bg-transparent {
     background-color: transparent !important;
 }
 
-.bg-red{
+.bg-red {
     background-color: lighten($red, 1) !important;
 }
 
-.bg-orange{
+.bg-orange {
     background-color: lighten($orange, 1) !important;
 }
 
-.bg-warning{
+.bg-warning {
     background-color: lighten($orange, 1) !important;
 }
 
-.bg-purple{
+.bg-purple {
     background-color: $purple;
+    color: $white !important;
+}
+
+.bg-green{
+    background-color: $green !important;
     color: $white !important;
 }

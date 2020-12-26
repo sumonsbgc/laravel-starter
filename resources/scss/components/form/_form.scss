@@ -1,23 +1,5 @@
+@import './button';
 form {
-
-    @mixin common-form-property {
-        width: 100%;
-        font-size: 1rem;
-        border-radius: 5px;
-        border: 1px solid $lightgray;
-        padding: .5rem;
-        color: #111111;
-        transition: outline .6s;
-        font-family: $text-font;
-        &:focus{
-            border: 2px solid $lightgray;
-            outline: 0;
-        }
-        &::placeholder{
-            color: $lightgray;
-        }
-    }
-
     .label{
         font-family: $text-font;
         font-size: 1rem;
@@ -75,7 +57,7 @@ form {
 
     .select2-container--default .select2-selection--single {
         background-color: #fff;
-        border: 1px solid #aaa;
+        border: 1px solid $purple;
         border-radius: 4px;
         padding: 9px 0px;
         height: 44px;
@@ -92,12 +74,12 @@ form {
 .select2-container--default 
 .select2-search--dropdown 
 .select2-search__field {
-    border: 1px solid $blue !important;
+    border: 1px solid $purple !important;
     border-radius: 4px;
     padding: 5px;
     height: 35px;
     &:focus{
-        outline-color: $blue;
+        outline-color: $purple;
     }
 }
 
@@ -114,4 +96,14 @@ form {
 .select2-container--open 
 .select2-dropdown--above{
     padding: 10px;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #6f41b4;
+    color: $white;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: $purple;
+    color: white;
 }

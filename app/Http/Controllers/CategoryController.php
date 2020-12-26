@@ -16,7 +16,6 @@ class CategoryController extends Controller
 
     public function index(){
         $categories = $this->cateogry->paginate(2);
-        
         $this->setPageTitle('Category Management', '');
         return view('admin.category.index', compact('categories'));
     }

@@ -24,7 +24,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
     
     public function findCategoryById(int $id){
         try{
-            return $this->findById($id);
+            return $this->findOrFailById($id);
         }catch(ModelNotFoundException $e){
             throw new ModelNotFoundException($e->getMessage());
         }

@@ -26,10 +26,6 @@ class UserRepository extends BaseRepository implements UserContract
         return $this->all($columns, $order, $sort);
     }
 
-    public function paginate($limit){
-        return $this->model->paginate($limit);
-    }
-
     public function findUserById(int $id)
     {
         try {

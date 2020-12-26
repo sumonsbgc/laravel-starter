@@ -5,5 +5,24 @@
 @mixin gradient($from, $to) {
     background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
     background: -moz-linear-gradient(top, $from, $to);
+    background: -moz-linear-gradient();
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+
+@mixin common-form-property {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid $purple;
+    padding: .5rem;
+    color: #111111;
+    transition: outline .6s;
+    font-family: $text-font;
+    &:focus{
+        border: 2px solid $purple;
+        outline: 0;
+    }
+    &::placeholder{
+        color: $lightblack;
+    }
 }

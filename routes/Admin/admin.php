@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\AttributeValueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\RoleController;
@@ -62,13 +63,21 @@ Route::prefix('admin')->middleware(['auth:admin', 'verified:admin', 'role:admin'
     Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
     Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-    Route::put('/category/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+    Route::delete('/category/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
 
     // Attribute Controller
     Route::get('/attributes', [AttributeController::class, 'index'])->name('admin.attributes');
     Route::post('/attribute/store', [AttributeController::class, 'store'])->name('admin.attribute.store');
     Route::get('/attribute/edit/{id}', [AttributeController::class, 'edit'])->name('admin.attribute.edit');
     Route::put('/attribute/update/{id}', [AttributeController::class, 'update'])->name('admin.attribute.update');
+    Route::delete('/attribute/delete/{id}', [AttributeController::class, 'delete'])->name('admin.attribute.delete');
+
+    // Attribute Value Controller
+    Route::post('/attributevalue/store', [AttributeValueController::class, 'store'])->name('admin.value.store');
+    Route::get('/attributevalue/edit/{id}', [AttributeValueController::class, 'edit'])->name('admin.value.edit');
+    Route::put('/attributevalue/update/{id}', [AttributeValueController::class, 'update'])->name('admin.value.update');
+    Route::delete('/attributevalue/delete/{id}', [AttributeValueController::class, 'delete'])->name('admin.value.delete');
+
 
     // Admin Role Controllers
     Route::get('/roles', [RoleController::class, 'index'])->name('admin.roles');

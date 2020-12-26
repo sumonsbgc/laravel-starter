@@ -16,16 +16,6 @@ $direction : (
     }
 }
 
-.btn{
-    background-color: lighten($color: $white, $amount: 4);
-    border-radius: 5px;
-    padding: 9px 12px;
-    color: #fff;
-    i{
-        font-size: .9rem;
-    }
-}
-
 .d-none{
     display: none;
 }

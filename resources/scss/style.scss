@@ -51,9 +51,10 @@ body{
     display: flex;
     li{
         border: 1px solid $purple;
-        margin-left: 5px;
-        border-radius: 15px;
+        margin-left: 3px;
+        border-radius: 5px;
         text-align: center;
+        font-size: .8rem;
         &.disabled{
             padding: 10px 20px;
         }
@@ -62,6 +63,7 @@ body{
             display: block;
             color: $black;
             cursor: pointer;
+            font-size: .8rem;
         }
         &.active{
             padding: 10px;

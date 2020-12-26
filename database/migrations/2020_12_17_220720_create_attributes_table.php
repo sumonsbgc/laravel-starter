@@ -15,6 +15,11 @@ class CreateAttributesTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 30)->unique();
+            $table->string('slug', 30)->unique();
+            $table->string('frontend_type', 30)->nullable();
+            $table->boolean('is_filterable')->nullable();
+            $table->boolean('is_required')->nullable();
             $table->timestamps();
         });
     }
