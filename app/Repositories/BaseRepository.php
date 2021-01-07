@@ -59,7 +59,7 @@ class BaseRepository implements BaseContract{
         return $this->model->where($data)->first();
     }
 
-    public function findOrFailByColumns(array $data)
+    public function firstOrFailByColumns(array $data)
     {
         return $this->model->where($data)->firstOrFail();
     }

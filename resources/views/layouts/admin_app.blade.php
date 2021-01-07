@@ -7,11 +7,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config()->get('app.name', 'Encoder IT Solution') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/admin-logo.svg') }}" type="image/svg">
 </head>
 
 <body>
 
-    <div id="page-wrapper">        
+    <div id="page-wrapper">
         <header>
             <div class="collapse-menu">
                 <button id="toggle-sidebar"> <i class="fas fa-bars"></i> </button>
@@ -145,14 +146,16 @@
                 </li>
                 <li><a href="" class=""><i class="fas fa-book"></i> Pages</a></li>
                 <li>
-                    <a href="javascript:void" class=""><i class="fas fa-shopping-cart"></i> Products</a>
+                    <a href="javascript:void" class=""><i class="fas fa-shopping-cart"></i> Product Management</a>
                     <ul class="sub-menu" id="sub-menu">
                         <li><a href="">All Products</a></li>
                         <li><a href="">Add New Product</a></li>
                         <li><a href="{{ route('admin.attributes') }}">Manage Attribute</a></li>
                         <li><a href="{{ route('admin.categories') }}">Manage Category</a></li>
+                        <li><a href="{{ route('admin.brands') }}">Manage Brand</a></li>
                     </ul>
                 </li>
+
                 <li><a href="" class=""><i class="fas fa-tachometer-alt"></i> Menu</a></li>
                 <li><a href="" class=""><i class="fas fa-tachometer-alt"></i> Order Management</a></li>
                 <li><a href="" class=""><i class="fas fa-tachometer-alt"></i> Options</a></li>

@@ -10,17 +10,14 @@ use Illuminate\Support\Facades\Validator;
 class AttributeController extends Controller
 {
     private $attribute;
-
     public function __construct(AttributeContract $attr)
     {
         $this->attribute = $attr;
     }
 
     public function index(){
-        $attributes = $this->attribute->paginate(10);
-
         $this->setPageTitle('Attribute Management', '');
-        return view('admin.attribute.index', compact('attributes'));
+        return view('admin.attribute.index');
     }
 
     public function create(){}
@@ -57,19 +54,12 @@ class AttributeController extends Controller
             return $this->redirectBackWithInput($valid->errors());
         }
 
-        if($this->attribute->updateAttribute($request->all(), $id)){
-            return $this->responseJson(['status' => 'success', 'message' => 'Attribute has been updated successfully']);
-        }
-
-        return $this->responseJson(['status' => 'error', 'message' => 'Sorry! There is some problem updating Attribute Data']);
-
+        $this->attribute->updateAttribute($request->all(), $id);
+        return $this->responseJson(['status' => 'success', 'message' => 'Attribute has been updated successfully']);        
     }
     
     public function delete($id){
-        if($this->attribute->deleteAttribute($id)){
-            return $this->responseJson(['status' => 'success', 'message' => 'Attribute has been deleted successfully']);
-        }
-        return $this->responseJson(['status' => 'error', 'message' => 'Sorry! There is some problem deleting Attribute Data']);
+        $this->attribute->deleteAttribute($id);
+        return $this->responseJson(['status' => 'success', 'message' => 'Attribute has been deleted successfully']);
     }
-
 }

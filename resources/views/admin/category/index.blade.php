@@ -99,7 +99,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td>{{ $category->parent->name ?? $category->name }}</td>
+                                        <td>{{ $category->parent->name ?? '-'}}</td>
                                         <td>
                                             <a href="{{ route('admin.category.edit', $category->id ) }}" class="btn shadow bg-warning" title="Edit"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.category.delete', $category->id) }}" class="btn shadow bg-red" title="Delete"><i class="fas fa-trash"></i></a>

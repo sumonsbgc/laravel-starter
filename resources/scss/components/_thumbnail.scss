@@ -1,0 +1,24 @@
+picture{
+    display: inline-block;
+    &.thumbnail{
+        width: 100%;
+        height: auto;
+        img{
+            max-width: 100%;
+            vertical-align: middle;
+        }
+
+        &.tiny{
+            width: 40px;
+        }
+        &.small{
+            width: 120px;
+        }
+        &.medium{
+            width: 320px;
+        }
+        &.large{
+            width: 600px;
+        }
+    }
+}

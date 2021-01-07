@@ -17,7 +17,7 @@ interface BaseContract{
     
     public function findByColumns(array $data);
 
-    public function findOrFailByColumns(array $data);
+    public function firstOrFailByColumns(array $data);
 
     public function getByColumns(array $data);
 

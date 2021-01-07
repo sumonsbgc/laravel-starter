@@ -8699,6 +8699,36 @@ body #page-wrapper aside .sidebar-menu li .sub-menu li a:hover {
   }
 }
 
+picture {
+  display: inline-block;
+}
+
+picture.thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+picture.thumbnail img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+picture.thumbnail.tiny {
+  width: 40px;
+}
+
+picture.thumbnail.small {
+  width: 120px;
+}
+
+picture.thumbnail.medium {
+  width: 320px;
+}
+
+picture.thumbnail.large {
+  width: 600px;
+}
+
 .kr-pagination {
   display: flex;
 }
@@ -8901,7 +8931,7 @@ body #page-wrapper aside .sidebar-menu li .sub-menu li a:hover {
   border-bottom: 4px solid #6f41b4;
   padding: 0.4rem;
   font-size: 1rem;
-  width: 80px;
+  width: 150px;
 }
 
 .btn.save-btn:focus {

@@ -12,6 +12,7 @@
 {{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">--}}
     <!-- Styles -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/admin-logo.svg') }}" type="image/x-icon">
 </head>
 
 <body>

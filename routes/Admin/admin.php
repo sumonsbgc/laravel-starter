@@ -1,20 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\AttributeController;
-use App\Http\Controllers\Admin\AttributeValueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\Admin\LoginController;
 use App\Http\Controllers\Auth\Admin\RegisterController;
+use App\Http\Controllers\Admin\AttributeValueController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Auth\Admin\VerificationController;
 use App\Http\Controllers\Auth\Admin\ResetPasswordController;
 use App\Http\Controllers\Auth\Admin\ForgotPasswordController;
 use App\Http\Controllers\Auth\Admin\ConfirmPasswordController;
-use App\Http\Controllers\CategoryController;
+
 
 // Authentication
 
@@ -77,6 +79,15 @@ Route::prefix('admin')->middleware(['auth:admin', 'verified:admin', 'role:admin'
     Route::get('/attributevalue/edit/{id}', [AttributeValueController::class, 'edit'])->name('admin.value.edit');
     Route::put('/attributevalue/update/{id}', [AttributeValueController::class, 'update'])->name('admin.value.update');
     Route::delete('/attributevalue/delete/{id}', [AttributeValueController::class, 'delete'])->name('admin.value.delete');
+
+    // Brand Controller
+    Route::get('/brands', [BrandController::class, 'index'])->name('admin.brands');
+    Route::post('/brand/store', [BrandController::class, 'store'])->name('admin.brand.store');
+    Route::get('/brand/edit/{id}', [BrandController::class, 'edit'])->name('admin.brand.edit');
+    Route::put('/brand/update/{id}', [BrandController::class, 'update'])->name('admin.brand.update');
+    Route::delete('/brand/delete/{id}', [BrandController::class, 'delete'])->name('admin.brand.delete');
+    
+
 
 
     // Admin Role Controllers

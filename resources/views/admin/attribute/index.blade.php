@@ -109,7 +109,7 @@
                 <div class="card">
                     <div class="card-header flex justify-between">
                         <span>List Attribute</span>
-                        <button class="btn save-btn" id="show_attr_card_btn"><i class="fas fa-plus"></i></button>
+                        <button class="btn save-btn" id="show_attr_card_btn"><i class="fas fa-plus"></i> Add Attribute</button>
                     </div>
                     <div class="card-body">
                         <table class="kr-table bordered my-1">
@@ -128,7 +128,7 @@
                                         <td>{{ $attribute->name }}</td>
                                         <td>{{ $attribute->slug }}</td>
                                         <td>
-                                            <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-green add_attr_value" title="Add Attribute Value"><i class="fas fa-plus"></i></a>
+                                            <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-green add_attr_value" title="Add Attribute Value"><i class="fas fa-plus"></i> Add Value</a>
                                             <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-warning edit-attr" title="Edit"><i class="fas fa-edit"></i></a>
                                             <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-red delete-attr" title="Delete"><i class="fas fa-trash"></i></a>
                                         </td>
@@ -155,7 +155,7 @@
                             @csrf
                             <input type="hidden" name="attribute_id" id="attribute_id" value="">
                             <div class="my-1">
-                                <label for="value" class="label">Attribute Value Name<span class="text-red">*</span></label>
+                                <label for="value" class="label">Attribute Value Name <span class="text-red">*</span></label>
                                 <input type="text" id="value" name="value" class="input-control @error('value') invalid @enderror" value="{{ old('value') }}" required>
                                 @error('value')
                                     <span class="invalid-feedback" role="alert">
@@ -172,12 +172,13 @@
                 </div>
                 <div class="card d-none" id="edit_attr_value_card">
                     <div class="card-header">
-                        Add Attribute Value
+                        Edit Attribute Value
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" id="add_attr_val_form" class="add_attr_val_form">
+                        <form action="" method="POST" id="edit_attr_val_form" class="add_attr_val_form">
                             @csrf
-                            <input type="hidden" name="attribute_id" id="attribute_id" value="">
+                            @method('PUT')
+                            <input type="hidden" name="value_id" id="value_id" value="">
                             <div class="my-1">
                                 <label for="value" class="label">Attribute Value Name<span class="text-red">*</span></label>
                                 <input type="text" id="value" name="value" class="input-control @error('value') invalid @enderror" value="{{ old('value') }}" required>
@@ -205,30 +206,20 @@
                             <thead>
                                 <tr>
                                     <th>Sl#</th>
-                                    <th>Attribute Name</th>
                                     <th>Attribute Values</th>
+                                    <th>Attribute Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($attributes ?? [] as $attribute)
+                                @foreach ($values ?? [] as $value)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{ $attribute->name }}</td>
+                                        <td>{{ $value->value }}</td>
+                                        <td>{{ $value->attribute->name }}</td>
                                         <td>
-                                            @forelse ($attribute->values as $attr)
-                                                @if($loop->last)
-                                                {{ $attr->value }}
-                                                @else
-                                                {{ $attr->value.", " }}
-                                                @endif
-                                            @empty
-                                                {{ '---' }}
-                                            @endforelse
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-warning edit-attr-value" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <a href="javascript:void(0)" data-id="{{ $attribute->id }}" class="btn shadow bg-red delete-attr-value" title="Delete"><i class="fas fa-trash"></i></a>
+                                            <a href="javascript:void(0)" data-id="{{ $value->id }}" class="btn shadow bg-warning edit-attr-value" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="javascript:void(0)" data-id="{{ $value->id }}" class="btn shadow bg-red delete-attr-value" title="Delete"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -236,7 +227,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        {{ $attributes->links('common.pagination.paginate') }}
+                        {{ $values->links('common.pagination.paginate') }}
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ class UserRepository extends BaseRepository implements UserContract
             $password = bcrypt($data['password']);
 
             if ($userCollection->has('profile_pic') && ($data['profile_pic'] instanceof UploadedFile)) {
-                $profile_pic = $this->uploadFile($data['profile_pic']);                
+                $profile_pic = $this->uploadFile($data['profile_pic'], 'profile');                
             }
 
             $mergeUserData = !empty($profile_pic) ? $userCollection->merge(compact('profile_pic', 'password')) : $userCollection->merge(compact('password'));
@@ -52,7 +52,9 @@ class UserRepository extends BaseRepository implements UserContract
             $user = $this->create($mergeUserData->all());
 
             $role = (new Role())->findById($data['role']);
+
             $user->roles()->sync($role);
+            
             return $user;
 
         } catch (QueryException $e) {
@@ -81,11 +83,12 @@ class UserRepository extends BaseRepository implements UserContract
     {
         try {
             $user = $this->findUserById($id);
+
             if (!empty($user->profile_pic)) {
                 $this->deleteFile($user->profile_pic);
             }
-            return $user->delete();
-            
+
+            return $this->delete($id);
         } catch (QueryException $e) {
             throw new InvalidArgumentException($e->getMessage());
         }

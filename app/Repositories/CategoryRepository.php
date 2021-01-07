@@ -31,13 +31,14 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
     }
 
     public function createCategory(array $data){
-        try{            
+        try{
             $collection = collect($data)->except('_token');
             $image      = null;
 
             if($collection->has('image') && ($data['image'] instanceof UploadedFile )){
                 $image = $this->uploadFile($data['image'], 'categories');
             };
+
             $featured = $collection->has('featured') ? 1: null;
             $menu     = $collection->has('menu') ? 1 : null;
             $merge    = $collection->merge(compact('image', 'featured', 'menu'));
@@ -56,15 +57,17 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
             $category   = $this->findCategoryById($id);
 
             if($collection->has('image') && ($data['image'] instanceof UploadedFile )){
-                $image = $this->uploadFile($data['image'], 'categories');
+                $image = $this->uploadFile($data['image'], 'categories');                
                 if(!empty($image) && !empty($category->image)){
                     $this->deleteFile($category->image);
                 }
+                $collection = $collection->merge(compact('image'));
             }
 
             $featured = $collection->has('featured') ? 1: null;
             $menu     = $collection->has('menu') ? 1 : null;
-            $merge    = $collection->merge(compact('image', 'featured', 'menu'));
+
+            $merge    = $collection->merge(compact('featured', 'menu'));
 
             return $category->update($merge->all());
 
@@ -75,8 +78,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 
     public function deleteCategory(int $id){
         try {
+            
             $category = $this->findCategoryById($id);
-
             if (!empty($category->profile_pic)) {
                 $this->deleteFile($category->profile_pic);
             }

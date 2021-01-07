@@ -1,0 +1,25 @@
+.kr-pagination{
+    display: flex;
+    li{
+        border: 1px solid $purple;
+        margin-left: 3px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: .8rem;
+        &.disabled{
+            padding: 10px 20px;
+        }
+        a{
+            padding: 10px;
+            display: block;
+            color: $black;
+            cursor: pointer;
+            font-size: .8rem;
+        }
+        &.active{
+            padding: 10px;
+            background-color: $purple;
+            color: $white;
+        }
+    }
+}
